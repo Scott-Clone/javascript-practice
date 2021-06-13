@@ -31,3 +31,23 @@ function range_step (start, end, step) {
 }
 
 console.log(range_step(5, 2, -1));
+
+// 2. Reverse an Array
+
+function reverse (arr) {
+    let arr_rev = []
+    let j = arr.length -1
+    for (let i of arr) {
+        arr_rev[j] = i;
+        j -= 1;
+    }
+    return arr_rev;
+}
+
+console.log(reverse([5, 2, -1]));
+
+function reverseInPlace (arr) {
+
+}
+
+// 3. A list
