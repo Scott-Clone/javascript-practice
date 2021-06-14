@@ -34,20 +34,30 @@ console.log(range_step(5, 2, -1));
 
 // 2. Reverse an Array
 
-function reverse (arr) {
+function reverseArray (arr) {
     let arr_rev = []
-    let j = arr.length -1
-    for (let i of arr) {
-        arr_rev[j] = i;
-        j -= 1;
+    for (let k of arr) {
+        arr_rev.unshift(k)
     }
     return arr_rev;
 }
 
-console.log(reverse([5, 2, -1]));
+console.log(reverseArray(["A", "B", "C"]));
 
-function reverseInPlace (arr) {
 
+function reverseArrayInPlace (arr) {
+
+     for (let i = 0; i <= Math.floor((arr.length - 1)/2); i++) {
+        x = arr[i];
+        y = arr[arr.length - 1 - i] 
+        arr[arr.length - 1 - i] = x
+        arr[i] = y
+     }
+     return arr
 }
+
+let arr = [1, 2, 3, 4, 5];
+reverseArrayInPlace(arr);
+console.log(arr);
 
 // 3. A list
