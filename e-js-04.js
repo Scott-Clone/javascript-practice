@@ -49,15 +49,49 @@ function reverseArrayInPlace (arr) {
 
      for (let i = 0; i <= Math.floor((arr.length - 1)/2); i++) {
         x = arr[i];
-        y = arr[arr.length - 1 - i] 
-        arr[arr.length - 1 - i] = x
+        y = arr[arr.length - 1 - i];
+        arr[arr.length - 1 - i] = x;
         arr[i] = y
      }
-     return arr
+     return arr;
 }
 
-let arr = [1, 2, 3, 4, 5];
-reverseArrayInPlace(arr);
-console.log(arr);
+console.log(reverseArrayInPlace([1, 2, 3, 4, 5]));
+
 
 // 3. A list
+
+function arrayToList (arr) {
+
+    let list = {
+        value: arr[arr.length - 1],
+        rest: null
+    }
+    for (let i = arr.length - 1; i >= 0; i--) {
+        list = {value: arr[i], rest: list}
+    }
+    return list
+}
+
+let arr = [1, 2, 3]
+console.log(arrayToList(arr))
+
+function listToArray (list) {
+    let arr = []
+    for (let node = list; node; node = node.rest) {
+        arr.push(node.value)
+    }
+    return arr
+}
+
+let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null } } }
+console.log(listToArray(list))
+
+function prepend(a, aList) {
+    let newList = {
+        value: a, rest: aList};
+    return newList
+}
+
+console.log(prepend(10, prepend(20, null)));
+
