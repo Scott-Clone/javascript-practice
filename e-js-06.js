@@ -29,34 +29,51 @@ console.log(new Vec(3, 4).length);
 
 class Group {
     constructor() {
-        this.members = []
+        this.members = [];
     }
     
-    get add () {
+    add (value) {
         if(!this.has(value)) {
-            this.members.push(value)
+            this.members.push(value);
         }
     }
 
     delete (value) {
-        this.members = this.members.filter(v =>v !== value)
+        this.members = this.members.filter(x => x !== value);
     }
 
     has (value) {
+        return this.members.includes(value);
+    }
 
+    static from (iterObject) {
+        let group = new Group;
+        for (let i of iterObject) {
+            group.add(i);
+        }
+        return group;
     }
 }
 
-let group = new Group(4);
-// console.log(group.has(10));
+let group = Group.from([10, 20]);
+console.log(group.has(10));
 // → true
-//console.log(group.has(30));
+console.log(group.has(30));
 // → false
 group.add(10);
 group.delete(10);
+group.add(100);
 console.log(group.has(10));
-// → false
+
 
 // 3. Iterable Groups
+
+
+for (let value of Group.from(["a", "b", "c"])) {
+    console.log(value);
+  }
+  // → a
+  // → b
+  // → c
 
 // 4. Borrowing a Method
