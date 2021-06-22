@@ -39,6 +39,7 @@ class Group {
     }
 
     delete (value) {
+        if (this.members)
         this.members = this.members.filter(x => x !== value);
     }
 
@@ -77,3 +78,9 @@ for (let value of Group.from(["a", "b", "c"])) {
   // → c
 
 // 4. Borrowing a Method
+
+let map = {one: true, two: true, hasOwnProperty: true};
+
+// Fix this call
+console.log(map.hasOwnProperty("one"));
+// → true
